@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD</title>
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+<style>
+
+      body {
+        background: #1d2630;
+        overflow-x: hidden;
+        font-family:Verdana, Geneva, Tahoma, sans-serif
+      }
+
+      label {
+        margin-left: 135px;
+        display:flex;
+        align-items: center;
+      }
+
+      input {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 10px 0;
+        margin-right: 205px;
+        margin-left: 130px;
+        display: inline;
+        border: 2px solid black;
+        color: black;
+        border-radius: 7px;
+        box-sizing: border-box;
+      }
+
+      input::placeholder{
+        color: black;
+      }
+      
+      button {
+        background-color: royalblue;
+        border: none;
+        color: black;
+        padding: 16px 32px;
+        text-decoration: none;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 7px;
+      }
+
+      .button {
+        border: none;
+        color: white;
+        padding: 16px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+        margin-left: 97px;
+      }
+
+      .button:hover {opacity: 1}
+
+      #Update {
+        display: none;
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 85%;
+        border: 1px solid;
+        margin-left: 105px;
+      }
+      
+      th, td {
+        padding: 0px;
+        text-align: left;
+        border: 1px solid;
+      }
+
+      h2 {
+        font-size: 35px;
+      }
+      
+</style>
+<body>
+    <div class="container">
+        <h2 class="text" style="margin-left: 135px;">ORDER LIST INVENTORY</h2>
+            <div class="row">
+                <div class="form-group" style="display:inline-block">
+                    <label for="brand">Brand</label>
+                    <input
+                        type="text"
+                        name="brand"
+                        class="form-control"
+                        id="brand"
+                        placeholder="Enter Brand"
+                    />
+                </div>
+                &ensp;
+                &ensp;
+                <div class="form-group" style="display:inline-block">
+                    <label for="model">Model</label>
+                    <input
+                        type="text"
+                        name="model"
+                        class="form-control"
+                        id="model"
+                        placeholder="Enter Model"
+                    />
+                </div>
+                <br>
+                <div class="form-group" style="display:inline-block">
+                    <label for="size">Size</label>
+                    <input
+                        type="number"
+                        name="size"
+                        class="form-control"
+                        id="size"
+                        placeholder="Enter Size"
+                    />
+                </div>
+                &ensp;
+                &ensp;
+                <div class="form-group" style="display:inline-block">
+                    <label for="quantity">Quantity</label>
+                    <input
+                        type="number"
+                        name="quantity"
+                        class="form-control"
+                        id="quantity"
+                        placeholder="Enter Quantity"
+                    />
+                </div>
+                <br>
+                <div class="form-group" style="display:inline-block">
+                    <label for="name">Name</label>
+                    <input
+                        type="text"
+                        name="name"
+                        class="form-control"
+                        id="name"
+                        placeholder="Enter Name"
+                    />
+                </div>
+                &ensp;
+                &ensp;
+                <div class="form-group" style="display:inline-block">
+                    <label for="email">Email Address</label>
+                    <input
+                        type="text"
+                        name="email"
+                        class="form-control"
+                        id="email"
+                        placeholder="Enter Email"
+                    />
+                </div>
+                <br>
+                <div class="form-group" style="display:inline-block">
+                    <label for="contact">Contact</label>
+                    <input
+                        type="text"
+                        name="number"
+                        class="form-control"
+                        id="contact"
+                        placeholder="Enter Contact"
+                    />
+                </div>
+                &ensp;
+                &ensp;
+                <div class="form-group" style="display:inline-block">
+                    <label for="address">Address</label>
+                    <input
+                        type="text"
+                        name="address"
+                        class="form-control"
+                        id="address"
+                        placeholder="Enter Address"
+                    />
+                </div>
+                <br>
+                <div class="form-group" style="display:inline-block">
+                    <label for="price">Price</label>
+                    <input
+                        type="text"
+                        name="price"
+                        class="form-control"
+                        id="price"
+                        placeholder="Price"
+                    />
+                </div>
+                &ensp;
+                &ensp;
+                    <div class="form-group" style="display:inline-block">
+                    <label for="total">Total</label>
+                    <input
+                        type="text"
+                        name="total"
+                        class="form-control"
+                        id="total"
+                        placeholder="Total"
+                    />
+                </div>
+                <br>
+                <div class="button">
+                    <button
+                    class="btn btn-success"
+                    id="Submit"
+                    onclick="AddData()">
+                        Add Order
+                    </button>
+                    <button
+                    class="btn btn-primary"
+                    id="Update">Update
+                    </button>
+                </div>
+            </div>
+    </div>
+    <br>
+    <br>
+    <hr>
+    <h2 class="text" style="margin-left: 15px; text-align: center;">ORDER LIST INVENTORY</h2>
+            <div class="row=">
+                <div class="text">
+                    <table class="table table-bordered" id="crudTable">
+                        <thead>
+                            <tr>
+                                <th>Brand</th>
+                                <th>Model</th>
+                                <th>Size</th>
+                                <th>Qty</th>
+                                <th>Name</th>
+                                <th>Email Address</th>
+                                <th>Contact</th>
+                                <th>Address</th>
+                                <th>Price</th>
+                                <th>Total</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    <script src="scripts.js"></script>
+</body>
+</html>
